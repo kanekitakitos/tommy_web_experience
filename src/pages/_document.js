@@ -8,6 +8,9 @@ export default function Document() {
         <meta name="keywords" content="AI, Digital Innovation, Media Production, Content Automation, Businesses, Creators" />
         <meta property="og:title" content="New Gen Services" />
         <meta property="og:description" content="Modern solutions for businesses and creators who want to grow, stand out, and save time." />
+
+        <link rel="icon" href="/favicon.ico" />
+
         {/* Preload critical fonts */}
         <link rel="preload" href="/assets/fonts/interregular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <link rel="preload" href="/assets/fonts/poppinreg.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
