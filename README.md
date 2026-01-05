@@ -5,9 +5,10 @@ A high-performance, interactive web application built with **Next.js**, focused 
 ## 🚀 Features
 
 - **Immersive Scroll Animations**: Powered by **GSAP (GreenSock)** and **ScrollTrigger** for seamless, snap-based navigation sections.
+- **Mobile-First Experience**: Optimized touch handling, iOS-specific smooth scrolling (`-webkit-overflow-scrolling`), and jitter-free animations for a native app feel.
 - **Dynamic UI**: Responsive components that adapt fluidly across Desktop, Tablet, and Mobile devices.
 - **Modern Aesthetics**: Glassmorphism effects, custom glows (`OverlayGlow`), and spotlight interactions.
-- **Performance Optimized**: Leveraging Next.js Turbopack and optimized asset delivery.
+- **Performance Optimized**: Leveraging Next.js Turbopack, SWC Minification, and optimized image/asset delivery for lightning-fast speeds.
 - **Interactive Branding**: Custom animated text and visual storytelling elements (`Orb`, `SpotlightCard`).
 
 ## 🛠 Tech Stack
