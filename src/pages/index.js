@@ -43,6 +43,8 @@ export default function Home() {
   useEffect(() => {
     // Mobile check removed to enable animation on all devices
 
+    // Optimized GSAP Config for Mobile
+    ScrollTrigger.config({ ignoreMobileResize: true });
     gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
     const throttle = (func, limit) => {
@@ -83,8 +85,8 @@ export default function Home() {
 
       scrollTween = gsap.to(window, {
         scrollTo: { y: sections[index], autoKill: false },
-        duration: isGoingUp ? 1.4 : 1.2,
-        ease: isGoingUp ? "power4.inOut" : "power3.out",
+        duration: 0.8,
+        ease: "expo.out",
         onStart: () => (document.body.style.overflow = "hidden"),
         onComplete: () => {
           document.body.style.overflow = "";
@@ -143,6 +145,17 @@ export default function Home() {
 
     let touchStartY = 0;
     const handleTouchStart = (e) => (touchStartY = e.touches[0].clientY);
+    const handleTouchMove = (e) => {
+      if (isScrolling.current || isInDifferenceSection()) return;
+      const currentY = e.touches[0].clientY;
+      const diff = touchStartY - currentY;
+
+      // Prevent native scroll at boundaries to ensure clean snap
+      if ((diff > 0 && isAtBottom()) || (diff < 0 && isAtTop())) {
+        e.preventDefault();
+      }
+    };
+
     const handleTouchEnd = (e) => {
       if (isScrolling.current || isInDifferenceSection()) return;
       const diff = touchStartY - e.changedTouches[0].clientY;
@@ -150,7 +163,7 @@ export default function Home() {
       if (diff > 0 && !isAtBottom()) return;
       if (diff < 0 && !isAtTop()) return;
 
-      if (Math.abs(diff) > 60) {
+      if (Math.abs(diff) > 50) { // Slightly more sensitive threshold
         if (diff > 0) snapToSection(currentSection.current + 1);
         else snapToSection(currentSection.current - 1);
       }
@@ -178,6 +191,7 @@ export default function Home() {
     window.addEventListener("wheel", handleWheel, { passive: false });
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, { passive: false });
     window.addEventListener("touchend", handleTouchEnd, { passive: true });
     window.addEventListener("keydown", handleKeyDown);
 
@@ -187,6 +201,7 @@ export default function Home() {
       window.removeEventListener("wheel", handleWheel);
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("touchend", handleTouchEnd);
       window.removeEventListener("keydown", handleKeyDown);
       ScrollTrigger.getAll().forEach((t) => t.kill());

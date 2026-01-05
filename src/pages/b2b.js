@@ -39,6 +39,8 @@ const B2BPage = () => {
     useEffect(() => {
         // Mobile check removed to enable animation on all devices
 
+        // Optimized GSAP Config for Mobile
+        ScrollTrigger.config({ ignoreMobileResize: true });
         gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
         const throttle = (func, limit) => {
@@ -132,6 +134,17 @@ const B2BPage = () => {
         let accumulatedDelta = 0;
         let touchStartY = 0;
         const handleTouchStart = (e) => (touchStartY = e.touches[0].clientY);
+        const handleTouchMove = (e) => {
+            if (isScrolling.current) return;
+            const currentY = e.touches[0].clientY;
+            const diff = touchStartY - currentY;
+
+            // Prevent native scroll at boundaries to ensure clean snap
+            if ((diff > 0 && isAtBottom()) || (diff < 0 && isAtTop())) {
+                e.preventDefault();
+            }
+        };
+
         const handleTouchEnd = (e) => {
             if (isScrolling.current) return;
             const diff = touchStartY - e.changedTouches[0].clientY;
@@ -139,7 +152,7 @@ const B2BPage = () => {
             if (diff > 0 && !isAtBottom()) return;
             if (diff < 0 && !isAtTop()) return;
 
-            if (Math.abs(diff) > 60) {
+            if (Math.abs(diff) > 50) {
                 if (diff > 0) snapToSection(currentSection.current + 1);
                 else snapToSection(currentSection.current - 1);
             }
@@ -167,6 +180,7 @@ const B2BPage = () => {
         window.addEventListener("wheel", handleWheel, { passive: false });
         window.addEventListener("scroll", handleScroll);
         window.addEventListener("touchstart", handleTouchStart, { passive: true });
+        window.addEventListener("touchmove", handleTouchMove, { passive: false });
         window.addEventListener("touchend", handleTouchEnd, { passive: true });
         window.addEventListener("keydown", handleKeyDown);
 
@@ -176,6 +190,7 @@ const B2BPage = () => {
             window.removeEventListener("wheel", handleWheel);
             window.removeEventListener("scroll", handleScroll);
             window.removeEventListener("touchstart", handleTouchStart);
+            window.removeEventListener("touchmove", handleTouchMove);
             window.removeEventListener("touchend", handleTouchEnd);
             window.removeEventListener("keydown", handleKeyDown);
             ScrollTrigger.getAll().forEach((t) => t.kill());
