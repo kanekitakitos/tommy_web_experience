@@ -113,7 +113,7 @@ const FooterScreen = () => {
             />
             <OverlayGlow />
             <div className="md:p-7 p-4 pt-0 md:pt-15 h-full border-t-[0.6] relative">
-                
+
                 {/* Bottom fade (visible on all devices) */}
                 <div
                     className="
@@ -137,7 +137,7 @@ const FooterScreen = () => {
 
                 <div className="flex md:flex-row flex-col justify-between h-full">
                     <div className="flex flex-col md:items-start items-center md:gap-0 gap-5">
-                        <h4 ref={titleRef} className="md:text-2xl mt-10 md:mt-0 text-xl md:text-start text-center w-2/3">
+                        <h4 ref={titleRef} className="md:text-2xl mt-10 md:mt-0 text-xl md:text-start text-center w-2/3 md:w-full lg:w-2/3">
                             {splitText("New Gen Services,")}
                             <span className="font-[poppin]">
                                 Modern Solutions
@@ -190,7 +190,7 @@ const FooterScreen = () => {
                 </div>
             </div>
             <div className="md:px-7 px-4 md:py-5 py-3 flex justify-between items-center border-t-[0.6] bg-[#040404]">
-                
+
                 {/* ALTERAÇÃO: Link com mailto: */}
                 <Link
                     ref={(el) => (bottomLinksRef.current[0] = el)}

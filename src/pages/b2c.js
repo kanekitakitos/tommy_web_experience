@@ -25,7 +25,7 @@ const B2CPage = () => {
                 resizeTimeout = setTimeout(() => {
                     try {
                         if (typeof ScrollTrigger !== 'undefined' && ScrollTrigger.refresh) ScrollTrigger.refresh();
-                    } catch (e) {}
+                    } catch (e) { }
                     window.dispatchEvent(new Event('resize'));
                     window.dispatchEvent(new Event('scroll'));
                 }, 220);
@@ -37,8 +37,7 @@ const B2CPage = () => {
     }, []);
 
     useEffect(() => {
-        const isMobile = window.matchMedia("(max-width: 768px)").matches;
-        if (isMobile) return;
+        // Mobile check removed to enable animation on all devices
 
         gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 

@@ -41,8 +41,7 @@ export default function Home() {
 
   // rest of your GSAP scroll logic
   useEffect(() => {
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    if (isMobile) return;
+    // Mobile check removed to enable animation on all devices
 
     gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 

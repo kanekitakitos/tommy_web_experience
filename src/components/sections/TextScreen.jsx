@@ -89,7 +89,7 @@ const TextScreen = () => {
   return (
     <div className="relative h-screen overflow-hidden text-white flex items-center justify-center">
       <OverlayGlow />
-      <h3 className="font-[poppinmed] md:w-3/5 w-full md:text-3xl text-lg text-center my-36 leading-snug z-10">
+      <h3 className="font-[poppinmed] md:w-3/4 lg:w-3/5 w-full md:text-2xl lg:text-3xl text-lg text-center my-36 leading-snug z-10">
         We leverage AI to achieve more<br />
         <span
           ref={effContainerRef}

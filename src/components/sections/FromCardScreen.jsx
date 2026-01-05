@@ -25,13 +25,14 @@ export default function FromCardScreen() {
         <OverlayGlow />
       </div>
 
-      <h2 className='z-10 text-3xl md:text-5xl text-center md:w-2/3 w-full font-[poppinmed] text-white leading-tight mb-2'>
+      {/* Título Principal */}
+      <h2 className='z-10 text-3xl md:text-4xl lg:text-5xl text-center md:w-3/4 lg:w-2/3 w-full font-[poppinmed] text-white leading-tight mb-2'>
         From Overwhelmed to Outstanding
       </h2>
 
       {/* Cards Container */}
       {/* ALTERAÇÃO: w-full e max-w-6xl para melhor controlo de largura */}
-      <div className="z-10 flex md:flex-row flex-col justify-center gap-6 md:gap-8 w-full md:w-[90%] max-w-6xl">
+      <div className="z-10 flex md:flex-row flex-col justify-center gap-6 md:gap-8 w-full md:w-[95%] lg:w-[90%] max-w-6xl">
 
         {/* Before Card */}
         {/* ALTERAÇÃO: p-6 em mobile para poupar espaço horizontal */}
@@ -68,13 +69,13 @@ export default function FromCardScreen() {
 
       </div>
 
-      
-      <p className="z-10 text-center md:w-3/5 w-full max-w-2xl text-sm text-gray-400 mt-4 md:mt-6 italic leading-relaxed px-2">
-        Before working with New Gen Services, creators often spend hours editing every 
-        video, struggle with inconsistent posting schedules, constantly choose between 
-        quality and quantity, and end up doing everything themselves. After partnering 
-        with us, they experience timely delivery of professional content, consistent 
-        presence across all platforms, high-quality output without burnout, and the 
+
+      <p className="z-10 text-center md:w-3/4 lg:w-3/5 w-full max-w-2xl text-sm text-gray-400 mt-4 md:mt-6 italic leading-relaxed px-2">
+        Before working with New Gen Services, creators often spend hours editing every
+        video, struggle with inconsistent posting schedules, constantly choose between
+        quality and quantity, and end up doing everything themselves. After partnering
+        with us, they experience timely delivery of professional content, consistent
+        presence across all platforms, high-quality output without burnout, and the
         freedom to focus on creating and growing.
       </p>
     </section>

@@ -54,16 +54,16 @@ const CardScreen = () => {
       <OverlayGlow />
 
       {/* AJUSTE: text-lg em mobile para não ocupar tanto espaço visual */}
-      <h3 className="md:text-3xl text-lg font-semibold text-center md:w-[70%] w-full leading-snug z-10">
+      <h3 className="lg:text-3xl md:text-2xl text-lg font-semibold text-center md:w-[70%] w-full leading-snug z-10">
         Whether you are a
       </h3>
 
-      <div className="flex md:flex-row flex-col items-center justify-center gap-6 md:gap-8 w-full max-w-5xl md:h-[500px]">
-        
+      <div className="flex md:flex-row flex-col items-center justify-center gap-6 md:gap-8 w-full max-w-5xl md:h-[400px] lg:h-[500px]">
+
         {/* Card 1 */}
         <SpotlightCard
           // AJUSTE: max-w-xs em mobile impede que a carta fique demasiado larga em telemóveis grandes
-          className="custom-spotlight-card w-full max-w-xs md:max-w-none md:w-1/2 h-[260px] md:h-full scale-100"
+          className="custom-spotlight-card w-full max-w-xs md:max-w-none md:w-[48%] lg:w-1/2 h-[260px] md:h-full scale-100"
           spotlightColor="#7726c1"
         >
           <div className="absolute inset-0 rounded-[inherit] overflow-hidden pointer-events-none">
@@ -79,12 +79,12 @@ const CardScreen = () => {
             ref={card1Ref}
             className="relative flex items-center justify-center w-full h-full bg-no-repeat bg-center bg-[length:40%]"
           >
-            <div className="absolute h-full w-full flex flex-col text-center items-center justify-center py-8 md:py-20 px-6">
-              
-              <h3 ref={card1TitleRef} className="text-2xl md:text-5xl uppercase font-bold tracking-wider mb-5 md:mb-0">
+            <div className="absolute h-full w-full flex flex-col text-center items-center justify-center py-8 md:py-12 lg:py-20 px-6">
+
+              <h3 ref={card1TitleRef} className="text-2xl md:text-3xl lg:text-5xl uppercase font-bold tracking-wider mb-5 md:mb-0">
                 Business
               </h3>
-              
+
               <div
                 ref={card1BtnRef}
                 className="w-full flex gap-[7px] mt-auto md:absolute md:bottom-8 md:left-0 md:px-6"
@@ -110,7 +110,7 @@ const CardScreen = () => {
         {/* Card 2 */}
         <SpotlightCard
           // AJUSTE: max-w-xs em mobile
-          className="custom-spotlight-card w-full max-w-xs md:max-w-none md:w-1/2 h-[260px] md:h-full scale-100"
+          className="custom-spotlight-card w-full max-w-xs md:max-w-none md:w-[48%] lg:w-1/2 h-[260px] md:h-full scale-100"
           spotlightColor="#7726c1"
         >
           <div className="absolute inset-0 rounded-[inherit] overflow-hidden pointer-events-none">
@@ -126,12 +126,12 @@ const CardScreen = () => {
             ref={card2Ref}
             className="relative flex items-center justify-center w-full h-full bg-no-repeat bg-center bg-[length:40%]"
           >
-            <div className="absolute h-full w-full flex flex-col text-center items-center justify-center py-8 md:py-20 px-6">
-              
-              <h3 ref={card2TitleRef} className="text-2xl md:text-5xl uppercase font-bold tracking-wider mb-5 md:mb-0">
+            <div className="absolute h-full w-full flex flex-col text-center items-center justify-center py-8 md:py-12 lg:py-20 px-6">
+
+              <h3 ref={card2TitleRef} className="text-2xl md:text-3xl lg:text-5xl uppercase font-bold tracking-wider mb-5 md:mb-0">
                 Creator
               </h3>
-              
+
               <div
                 ref={card2BtnRef}
                 className="w-full flex gap-[7px] mt-auto md:absolute md:bottom-8 md:left-0 md:px-6"

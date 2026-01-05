@@ -83,23 +83,23 @@ const HomeScreen = () => {
 
     return (
         <div className="min-h-[100dvh] w-full overflow-x-hidden flex flex-col items-center relative">
-            
+
             {/* Overlay */}
             <div className="pointer-events-none absolute inset-0 z-0">
                 <OverlayGlow />
             </div>
 
             {/* Navbar */}
-            <header className="z-20 md:w-[57%] w-[90%] flex justify-between items-center text-lg py-4 md:mt-4">
+            <header className="z-20 md:w-[80%] lg:w-[57%] w-[90%] flex justify-between items-center text-lg py-4 md:mt-4">
                 <Logo />
                 <Button text="Book Meeting" isBookMeeting={true} />
             </header>
 
             {/* Main Content Wrapper */}
-            <main className="flex-1 flex flex-col items-center justify-center w-full z-10 gap-4 md:gap-0 py-6 md:py-0">
-                
+            <main className="flex-1 flex flex-col items-center justify-center w-full z-10 gap-4 md:gap-8 lg:gap-0 py-6 md:py-0">
+
                 {/* Hero Text */}
-                <h2 className="text-3xl md:text-5xl text-center md:w-2/3 w-[90%] font-[poppinmed] text-white z-10 leading-snug">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl text-center md:w-[80%] lg:w-2/3 w-[90%] font-[poppinmed] text-white z-10 leading-snug">
                     Powering the future of{" "}
                     <span
                         ref={containerRef}
@@ -128,8 +128,8 @@ const HomeScreen = () => {
                 </h2>
 
                 {/* Orb Section Container */}
-                <div className="relative aspect-square w-full max-w-[320px] md:max-w-[480px] my-4 md:my-8 transform-gpu flex items-center justify-center">
-                    
+                <div className="relative aspect-square w-full max-w-[320px] md:max-w-[380px] lg:max-w-[480px] my-4 md:my-8 transform-gpu flex items-center justify-center">
+
 
                     {/* A Orb original */}
                     <div className="absolute inset-0 z-10 pointer-events-auto">
@@ -138,7 +138,7 @@ const HomeScreen = () => {
                 </div>
 
                 {/* Bottom Text */}
-                <p className="md:w-[35%] w-[85%] font-[poppin] text-sm md:text-xl text-center text-white/80 drop-shadow-sm leading-relaxed z-10">
+                <p className="md:w-[60%] lg:w-[35%] w-[85%] font-[poppin] text-sm md:text-lg lg:text-xl text-center text-white/80 drop-shadow-sm leading-relaxed z-10">
                     Modern solutions for businesses and creators who want to grow,
                     stand out, and save time.
                 </p>

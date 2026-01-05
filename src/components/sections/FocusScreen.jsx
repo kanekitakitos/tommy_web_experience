@@ -21,16 +21,16 @@ const FocusScreen = () => {
             {/* Main Content Wrapper */}
             {/* ALTERAÇÃO: Removido -mt-20 no mobile. Usamos flex-1 e py-12 para centrar e dar espaço. */}
             <div className="flex-1 flex flex-col items-center justify-center w-full z-10 py-12 md:py-0 md:-mt-20 gap-10 md:gap-0">
-                
+
                 <div className="z-10 flex flex-col items-center gap-6 px-4">
                     {/* ALTERAÇÃO: 
-                        - text-3xl md:text-5xl para tamanhos consistentes.
-                        - whitespace-normal em mobile (permite quebrar linha), whitespace-nowrap em desktop.
+                        - text-3xl md:text-5xl lg:text-6xl
+                        - whitespace-normal SEMPRE, ou pelo menos em tablets/mobile, evitando o corte lateral
                     */}
-                    <h2 className="text-3xl md:text-5xl lg:text-6xl text-center md:w-2/3 w-full font-[poppinmed] text-white leading-tight md:leading-snug whitespace-normal md:whitespace-nowrap">
+                    <h2 className="text-3xl md:text-5xl lg:text-6xl text-center md:w-3/4 lg:w-2/3 w-full font-[poppinmed] text-white leading-tight md:leading-snug">
                         Focus on Creating – Not Managing
                     </h2>
-                    
+
                     {/* ALTERAÇÃO: Melhoria na legibilidade do texto descritivo */}
                     <p className="text-center md:w-[45%] w-full max-w-md md:max-w-none text-base md:text-lg text-white/80 mb-4 px-2">
                         At New Gen Services, we empower you to create more, create
@@ -39,7 +39,7 @@ const FocusScreen = () => {
                         best - creating, performing, and connecting with your
                         audience.
                     </p>
-                    
+
                     <Button text="Book Meeting" isBookMeeting={true} />
                 </div>
 

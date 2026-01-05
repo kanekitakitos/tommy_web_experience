@@ -54,22 +54,22 @@ const UnlockCardScreen = () => {
 
             <div className="z-10 flex flex-col items-center w-full gap-2 mb-8 md:mb-12 px-4">
                 {/* ALTERAÇÃO: text-3xl fixo em mobile para legibilidade */}
-                <h2 className="text-3xl md:text-5xl text-center md:w-2/3 w-full font-[poppinmed] text-white leading-tight capitalize">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl text-center md:w-3/4 lg:w-2/3 w-full font-[poppinmed] text-white leading-tight capitalize">
                     unlock your Creative Potential
                 </h2>
-                <p className="text-center md:w-2/5 w-full text-sm md:text-base text-gray-400">
+                <p className="text-center md:w-3/4 lg:w-2/5 w-full text-sm md:text-base text-gray-400">
                     Professional content systems for creators and artists.
                 </p>
             </div>
 
             <div className="z-10 w-full flex justify-center py-4 md:py-6 px-4">
                 {/* ALTERAÇÃO: gap-6 em mobile */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 w-full max-w-sm md:max-w-[85%] items-stretch">
+                <div className="flex flex-wrap justify-center gap-6 md:gap-8 w-full max-w-sm md:max-w-[95%] lg:max-w-[85%] items-stretch">
                     {cards.map((card) => (
                         <div
                             key={card.title}
                             // ALTERAÇÃO: p-6 em mobile. min-h-0 em mobile (altura automática), min-h-[420px] em desktop.
-                            className="bg-white/[0.12] border border-white/30 rounded-2xl p-6 md:p-8 backdrop-blur-xl shadow-[0_0_40px_rgba(0,0,0,0.5)] flex flex-col justify-between group hover:bg-white/[0.18] hover:border-purple-500 hover:shadow-[0_0_50px_rgba(168,85,247,0.3)] transition-all duration-500 relative overflow-hidden min-h-0 md:min-h-[420px]"
+                            className="bg-white/[0.12] border border-white/30 rounded-2xl p-6 md:p-8 backdrop-blur-xl shadow-[0_0_40px_rgba(0,0,0,0.5)] flex flex-col justify-between group hover:bg-white/[0.18] hover:border-purple-500 hover:shadow-[0_0_50px_rgba(168,85,247,0.3)] transition-all duration-500 relative overflow-hidden min-h-0 md:min-h-[420px] w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(33.333%-1.5rem)] box-border"
                         >
                             {/* Inner glow on hover */}
                             <div className="absolute inset-0 bg-gradient-to-br from-purple-500/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

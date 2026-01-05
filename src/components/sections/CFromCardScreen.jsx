@@ -28,12 +28,13 @@ export default function CFromCardScreen() {
       </div>
 
       {/* Título Principal */}
-      <h2 className='z-10 text-3xl md:text-5xl text-center md:w-2/3 w-full font-[poppinmed] text-white leading-tight mb-4'>
+      {/* Título Principal */}
+      <h2 className='z-10 text-3xl md:text-4xl lg:text-5xl text-center md:w-3/4 lg:w-2/3 w-full font-[poppinmed] text-white leading-tight mb-4'>
         Helping Your Business Stand Out
       </h2>
 
       {/* Cards Container */}
-      <div className="z-10 flex md:flex-row flex-col justify-center gap-6 md:gap-8 w-full md:w-[90%] max-w-6xl">
+      <div className="z-10 flex md:flex-row flex-col justify-center gap-6 md:gap-8 w-full md:w-[95%] lg:w-[90%] max-w-6xl">
 
         {/* Before Card */}
         <div className="bg-white/[0.12] border border-white/30 rounded-2xl p-6 md:p-8 backdrop-blur-md shadow-[0_0_30px_rgba(239,68,68,0.15)] hover:scale-[1.02] hover:bg-white/[0.18] transition-all duration-300 cursor-default flex-1">
@@ -69,7 +70,7 @@ export default function CFromCardScreen() {
       </div>
 
       {/* Paragraph */}
-      <p className="z-10 text-center md:w-3/5 w-full text-sm text-gray-400 mt-4 md:mt-8 italic leading-relaxed px-2">
+      <p className="z-10 text-center md:w-3/4 lg:w-3/5 w-full text-sm text-gray-400 mt-4 md:mt-8 italic leading-relaxed px-2">
         Before working with New Gen Services, businesses often operate with manual processes, disconnected systems, and marketing efforts that lack structure and consistency, leading to inefficiencies, unclear brand communication, and digital assets that do not fully support business objectives. After partnering with us, organizations benefit from AI-powered voice agents, integrated automations, structured marketing execution, cohesive branding, and high-performing websites—enabling smoother operations and allowing teams to focus on strategic growth and execution.
       </p>
     </section>

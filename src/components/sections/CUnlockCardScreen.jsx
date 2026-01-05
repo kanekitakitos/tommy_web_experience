@@ -89,10 +89,10 @@ const CUnlockCardScreen = () => {
       {/* Header Section */}
       <div className='z-10 flex flex-col items-center w-full gap-4 mb-8 md:mb-12 px-4'>
         {/* ALTERAÇÃO: text-3xl fixo em mobile para garantir leitura */}
-        <h2 className='text-3xl md:text-5xl text-center md:w-2/3 w-full font-[poppinmed] text-white leading-tight capitalize'>
+        <h2 className='text-3xl md:text-4xl lg:text-5xl text-center md:w-3/4 lg:w-2/3 w-full font-[poppinmed] text-white leading-tight capitalize'>
           What We Offer
         </h2>
-        <p className='text-center md:w-1/2 w-full text-sm md:text-base text-gray-400 leading-relaxed'>
+        <p className='text-center md:w-2/3 lg:w-1/2 w-full text-sm md:text-base text-gray-400 leading-relaxed'>
           Transform your business with end-to-end AI and digital solutions.
         </p>
       </div>
@@ -106,9 +106,9 @@ const CUnlockCardScreen = () => {
               key={card.title}
               // ALTERAÇÃO:
               // 1. w-full max-w-md (mobile): Ocupa largura total mas não fica gigante em tablets pequenos
-              // 2. md:w-[calc(32%...)] (desktop): 3 colunas equilibradas
-              // 3. h-auto: Altura ajustável ao conteúdo
-              className="bg-white/[0.12] border border-white/30 rounded-2xl p-6 md:p-8 backdrop-blur-xl shadow-[0_0_40px_rgba(0,0,0,0.5)] flex flex-col justify-between group hover:bg-white/[0.18] hover:border-purple-500 hover:shadow-[0_0_50px_rgba(168,85,247,0.3)] transition-all duration-500 w-full max-w-md md:max-w-none md:w-[calc(32%-1rem)] min-h-0 md:min-h-[420px] relative overflow-hidden"
+              // 2. md:w-[calc(50%-1.5rem)] (tablet): 2 colunas equilibradas
+              // 3. lg:w-[calc(33.333%-1.5rem)] (desktop): 3 colunas
+              className="bg-white/[0.12] border border-white/30 rounded-2xl p-6 md:p-8 backdrop-blur-xl shadow-[0_0_40px_rgba(0,0,0,0.5)] flex flex-col justify-between group hover:bg-white/[0.18] hover:border-purple-500 hover:shadow-[0_0_50px_rgba(168,85,247,0.3)] transition-all duration-500 w-full max-w-md md:max-w-none md:w-[calc(50%-1.5rem)] lg:w-[calc(33.333%-1.5rem)] min-h-0 md:min-h-[420px] relative overflow-hidden"
             >
               {/* Stronger inner glow on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -117,11 +117,11 @@ const CUnlockCardScreen = () => {
                 <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-gradient-to-br from-[#7726C1] to-[#a855f7] flex items-center justify-center mb-2 shrink-0 shadow-lg shadow-purple-500/20">
                   {React.cloneElement(card.icon, { className: "w-7 h-7 md:w-8 md:h-8 text-white" })}
                 </div>
-                
+
                 <h3 className="text-xl md:text-2xl font-bold font-[poppinmed] leading-tight text-white">
                   {card.title}
                 </h3>
-                
+
                 <p className="text-sm md:text-[15px] text-gray-200 leading-relaxed">
                   {card.desc}
                 </p>
