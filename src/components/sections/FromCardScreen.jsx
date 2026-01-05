@@ -3,19 +3,17 @@ import OverlayGlow from "@/components/effects/OverlayGlow";
 
 export default function FromCardScreen() {
   const beforeList = [
-    "Customer calls and inquiries handled manually",
-    "Disconnected tools and fragmented internal workflows",
-    "Marketing efforts inconsistent and difficult to manage",
-    "Brand messaging unclear across touchpoints",
-    "Website not effectively supporting business objectives"
+    "Hours spent editing every single video",
+    "Inconsistent posting schedules",
+    "Choosing between quality and quantity",
+    "Doing everything yourself",
   ];
 
   const afterList = [
-    "AI voice agents managing customer calls and inquiries",
-    "Integrated automations connecting systems and workflows",
-    "Structured marketing systems with results",
-    "Clear and unified branding across all channels",
-    "High-performing websites aligned with business goals"
+    "Timely delivery of professional content",
+    "Consistent presence across all platforms",
+    "High-quality output without burnout",
+    "Time to focus on creating and growing",
   ];
 
 
@@ -70,10 +68,14 @@ export default function FromCardScreen() {
 
       </div>
 
-      {/* Paragraph */}
-      {/* ALTERAÇÃO: Aumentei para text-sm (11px é ilegível em mobile), adicionei max-width e padding */}
+      
       <p className="z-10 text-center md:w-3/5 w-full max-w-2xl text-sm text-gray-400 mt-4 md:mt-6 italic leading-relaxed px-2">
-        Before working with New Gen Services, businesses often operate with manual processes, disconnected systems, and marketing efforts that lack structure and consistency, leading to inefficiencies, unclear brand communication, and digital assets that do not fully support business objectives. After partnering with us, organizations benefit from AI-powered voice agents, integrated automations, structured marketing execution, cohesive branding, and high-performing websites—enabling smoother operations and allowing teams to focus on strategic growth and execution.
+        Before working with New Gen Services, creators often spend hours editing every 
+        video, struggle with inconsistent posting schedules, constantly choose between 
+        quality and quantity, and end up doing everything themselves. After partnering 
+        with us, they experience timely delivery of professional content, consistent 
+        presence across all platforms, high-quality output without burnout, and the 
+        freedom to focus on creating and growing.
       </p>
     </section>
   );
