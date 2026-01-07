@@ -187,10 +187,10 @@ const FooterScreen = () => {
                                     <button onClick={handleBackToTop} className="text-gray-400 hover:text-white transition-colors text-sm">Back to Top</button>
                                 </li>
                                 <li>
-                                    <Link href="/b2b" className="text-gray-400 hover:text-white transition-colors text-sm">Businesses</Link>
+                                    <button onClick={() => window.location.href = "/b2b"} className="text-gray-400 hover:text-white transition-colors text-sm">Businesses</button>
                                 </li>
                                 <li>
-                                    <Link href="/b2c" className="text-gray-400 hover:text-white transition-colors text-sm">Creators</Link>
+                                    <button onClick={() => window.location.href = "/b2c"} className="text-gray-400 hover:text-white transition-colors text-sm">Creators</button>
                                 </li>
                             </ul>
                         </div>
