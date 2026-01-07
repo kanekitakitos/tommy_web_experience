@@ -35,7 +35,7 @@ const FooterScreen = () => {
             scrollTrigger: {
                 trigger: ".footer-container",
                 start: "top 85%",
-                toggleActions: "play none none reverse",
+                toggleActions: "play none none none", // Keep visible once played
             },
         });
 
@@ -50,6 +50,7 @@ const FooterScreen = () => {
                 stagger: 0.03,
                 ease: "power2.out",
                 duration: 0.6,
+                clearProps: "all" // Ensure cleanliness after animation
             },
             0
         );
@@ -63,6 +64,7 @@ const FooterScreen = () => {
                 scale: 0.9,
                 ease: "back.out(1.5)",
                 duration: 0.6,
+                clearProps: "all"
             },
             0.2
         );
@@ -75,6 +77,7 @@ const FooterScreen = () => {
                 opacity: 0,
                 ease: "power2.out",
                 duration: 0.6,
+                clearProps: "all"
             },
             0.3
         );
@@ -88,17 +91,23 @@ const FooterScreen = () => {
                 stagger: 0.1,
                 ease: "power2.out",
                 duration: 0.6,
+                clearProps: "all"
             },
             0.5
         );
 
-        // Force ScrollTrigger to refresh its positions after the animations are set up.
-        // This is crucial for client-side navigation where the DOM layout might change.
-        const timer = setTimeout(() => {
+        // Ensure ScrollTrigger refreshes after layout is stable
+        // This is critical for client-side navigation (Quick Links)
+        const handleRefresh = () => {
             ScrollTrigger.refresh();
-        }, 500);
+        };
 
-        return () => clearTimeout(timer);
+        // Use requestAnimationFrame for cleaner timing frame-perfect
+        requestAnimationFrame(() => {
+            handleRefresh();
+            // Double check slightly later for laggy image loads
+            setTimeout(handleRefresh, 100);
+        });
 
     }, []);
 
