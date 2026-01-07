@@ -1,5 +1,17 @@
 import { Html, Head, Main, NextScript } from "next/document";
 
+/**
+ * Custom Document Component
+ * 
+ * Overrides the default Next.js Document to control the `<html>` and `<body>` tags.
+ * This is where we:
+ * 1. Set the lang attribute for accessibility (`html lang="en"`).
+ * 2. Inject global Meta tags for SEO (Description, Keywords, OGs).
+ * 3. Preload critical fonts (Inter, Poppins) to prevent FOUT (Flash of Unstyled Text).
+ * 
+ * @component
+ * @returns {JSX.Element} The HTML shell.
+ */
 export default function Document() {
   return (
     <Html lang="en">

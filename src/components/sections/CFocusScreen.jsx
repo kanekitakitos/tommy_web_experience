@@ -4,6 +4,20 @@ import Button from "@/components/ui/Button";
 import Logo from "@/components/ui/Logo";
 import { LucideCheckCircle } from "lucide-react";
 
+/**
+ * CFocusScreen Component
+ * 
+ * The Hero/Intro section for the Business (B2B) page.
+ * Focuses on "Services Built for Growth" and scaling operations.
+ * 
+ * Features:
+ * - Navbar integration (Logo + Book Meeting).
+ * - "Tags" footer list ("For SMBs", "Enterprise", "Start-ups").
+ * - Responsive typography (adjusts for mobile/desktop).
+ * 
+ * @component
+ * @returns {JSX.Element} The Business Hero section.
+ */
 const CFocusScreen = () => {
     return (
         // ALTERAÇÃO: min-h-[100dvh] para garantir que cabe tudo sem cortar, mesmo com barras de navegador

@@ -2,6 +2,26 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 
+/**
+ * OverlayGlow Component
+ * 
+ * A decorative ambient light element that floats, pulses, and rotates.
+ * Used behind text or sections to add depth and "premium" feel.
+ * 
+ * Animation:
+ * - Floating: Sine wave movement on X/Y.
+ * - Pulsing: Scales up/down and changes box-shadow intensity.
+ * - Disabled on mobile to save performance.
+ * 
+ * @component
+ * @param {Object} props
+ * @param {number} [props.size=600] - Width/Height in pixels.
+ * @param {string} [props.color1] - Center gradient color.
+ * @param {string} [props.color2] - Outer gradient color.
+ * @param {number} [props.blur=180] - CSS blur amount in px.
+ * @param {string} [props.className] - Extra classes.
+ * @param {number} [props.scale=1.6] - Animation max scale factor.
+ */
 const OverlayGlow = ({
   size = 600,
   color1 = "rgba(155,0,255,0.6)",

@@ -13,6 +13,19 @@ const businessWords = ["Businesses", "Creators", "Artists", "Entrepreneurs"];
 
 
 
+/**
+ * HomeScreen Component
+ * 
+ * The Landing Page Hero section.
+ * Features the main value proposition, a rotating list of target audiences, and the interactive `Orb`.
+ * 
+ * Key Logic:
+ * - Word Cycler: "Powering the future of [Businesses / Creators / ...]" using GSAP to slide words.
+ * - Orb Integration: Centers the WebGL orb as a primary visual anchor.
+ * 
+ * @component
+ * @returns {JSX.Element} Landing page hero.
+ */
 const HomeScreen = () => {
     const wordRef = useRef(null);
     const containerRef = useRef(null);

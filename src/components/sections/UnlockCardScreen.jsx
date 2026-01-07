@@ -3,6 +3,20 @@ import OverlayGlow from "@/components/effects/OverlayGlow";
 import { PlayCircle, Sparkles, Radio, CheckCircle } from "lucide-react";
 import Button from "@/components/ui/Button";
 
+/**
+ * UnlockCardScreen Component
+ * 
+ * A features showcase grid tailored for Creators and Personal Brands.
+ * Highlights services like Media Production, AI Content Creation, and Content Automation.
+ * 
+ * Features:
+ * - Responsive grid layout (1 col mobile, 3 col desktop).
+ * - "Cards" with icons, descriptions, and feature lists.
+ * - tailored specifically for the "Creator" audience needs (YouTube, TikTok, etc).
+ * 
+ * @component
+ * @returns {JSX.Element} The rendered services grid.
+ */
 const UnlockCardScreen = () => {
     const cards = [
         {

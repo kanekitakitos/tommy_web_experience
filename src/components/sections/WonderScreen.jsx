@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState, useCallback } from "react";
+import React, { useRef, useState, useCallback, useEffect } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -8,23 +8,56 @@ import Button from "@/components/ui/Button";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
+/**
+ * WonderScreen Component
+ * 
+ * The final Call-to-Action (CTA) screen of the scroll flow. 
+ * Features a unique dynamic SVG border animation that resembles a "folder" or "speech bubble" shape.
+ * 
+ * Key Features:
+ * - Dynamic SVG Path: Calculates a custom path shape based on the container size.
+ * - ResizeObserver: Recalculates the path automatically when the component dimensions change.
+ * - GSAP Animations: 
+ *   - Intro: Elements scale and fade in with staggered timing.
+ *   - Continuous: A "glow" effect travels along the SVG border path infinitely.
+ * 
+ * @component
+ * @returns {JSX.Element} The rendered CTA section.
+ */
 const WonderScreen = () => {
+    /** @type {React.MutableRefObject<HTMLDivElement>} Main container ref for size calculation and trigger */
     const containerRef = useRef(null);
     const h2Ref = useRef(null);
     const h3Ref = useRef(null);
     const buttonRef = useRef(null);
+    /** @type {React.MutableRefObject<SVGPathElement>} Ref for the animated glow path */
     const glowBorderRef = useRef(null);
     const baseBorderRef = useRef(null);
 
     // Estado para guardar o caminho SVG calculado dinamicamente
     const [pathD, setPathD] = useState("");
 
-    // Função para calcular o caminho da "pasta" com base no tamanho real do container
+    /**
+     * Calculates the SVG path string ("d" attribute) for the custom border shape.
+     * The shape includes a "notch" or cutout at the bottom.
+     * 
+     * Formula:
+     * 1. Start at top-left.
+     * 2. Go to top-right.
+     * 3. Go down to the bottom (minus notch height).
+     * 4. Draw the notch/triangle cutout.
+     * 5. Finish at bottom-left and close path.
+     * 
+     * @callback updatePath
+     */
     const updatePath = useCallback(() => {
         if (containerRef.current) {
             // Obtém o tamanho exato do container de texto (que varia no mobile)
             const { offsetWidth: w, offsetHeight: h } = containerRef.current;
-            
+
+            // Se as dimensões forem 0 ou irreais, não atualiza para evitar glitch
+            if (w === 0 || h === 0) return;
+
             // Configurações do desenho
             const strokeWidth = 2.5;
             const m = strokeWidth / 2; // Margem para não cortar o stroke
@@ -38,7 +71,7 @@ const WonderScreen = () => {
             const bottomNotch = h - m;            // Fundo real do recorte
 
             // Início do recorte (notch) - aproximandamente no centro
-            const notchStartX = (w * 0.5) + notchWidth; 
+            const notchStartX = (w * 0.5) + notchWidth;
             const notchPeakX = w * 0.5; // Pico do recorte no centro
 
             // Desenha o caminho SVG dinâmico (pasta invertida)
@@ -57,12 +90,27 @@ const WonderScreen = () => {
         }
     }, []);
 
-    useGSAP(() => {
-        // 1. Calcula o caminho inicial
-        updatePath();
+    // Atualiza o caminho quando o componente muda de tamanho (ResizeObserver é mais robusto que window resize)
+    useEffect(() => {
+        const element = containerRef.current;
+        if (!element) return;
 
-        // 2. Recalcula se a janela mudar de tamanho
-        window.addEventListener("resize", updatePath);
+        const resizeObserver = new ResizeObserver(() => {
+            updatePath();
+            // Atualiza o ScrollTrigger quando o tamanho muda para garantir precisão
+            ScrollTrigger.refresh();
+        });
+
+        resizeObserver.observe(element);
+
+        return () => {
+            resizeObserver.disconnect();
+        };
+    }, [updatePath]);
+
+    useGSAP(() => {
+        // Garante que o updatePath rode na montagem inicial também
+        updatePath();
 
         // 3. Animações de entrada (ScrollTrigger)
         const tl = gsap.timeline({
@@ -74,36 +122,41 @@ const WonderScreen = () => {
             },
         });
 
-        tl.from(
+        // Use fromTo instead of from to avoid race conditions leaving elements invisible
+        tl.fromTo(
             containerRef.current,
-            { scale: 0.95, opacity: 0, ease: "power2.out", duration: 0.8 },
+            { scale: 0.95, opacity: 0 },
+            { scale: 1, opacity: 1, ease: "power2.out", duration: 0.8 },
             0
         );
 
         const h2Words = h2Ref.current.querySelectorAll(".word");
-        tl.from(
-            h2Words,
-            { y: 30, opacity: 0, scale: 0.9, stagger: 0.04, ease: "back.out(1.2)" },
-            0.1
-        );
+        if (h2Words.length > 0) {
+            tl.fromTo(
+                h2Words,
+                { y: 30, opacity: 0, scale: 0.9 },
+                { y: 0, opacity: 1, scale: 1, stagger: 0.04, ease: "back.out(1.2)" },
+                0.1
+            );
+        }
 
         const h3Words = h3Ref.current.querySelectorAll(".word");
-        tl.from(
-            h3Words,
-            { y: 20, opacity: 0, stagger: 0.02, ease: "power2.out" },
-            0.3
-        );
+        if (h3Words.length > 0) {
+            tl.fromTo(
+                h3Words,
+                { y: 20, opacity: 0 },
+                { y: 0, opacity: 1, stagger: 0.02, ease: "power2.out" },
+                0.3
+            );
+        }
 
-        tl.from(
+        tl.fromTo(
             buttonRef.current,
-            { y: 20, opacity: 0, scale: 0.95, ease: "back.out(1.5)" },
+            { y: 20, opacity: 0, scale: 0.95 },
+            { y: 0, opacity: 1, scale: 1, ease: "back.out(1.5)" },
             0.5
         );
 
-        // Limpeza do evento de resize
-        return () => {
-            window.removeEventListener("resize", updatePath);
-        };
     }, [updatePath]);
 
     // 4. Animação contínua do Glow (precisa de useEffect separado pois depende de pathD estar pronto)
@@ -149,7 +202,8 @@ const WonderScreen = () => {
             <div
                 ref={containerRef}
                 // Altura h-auto, padding interno px-6 md:px-12 para responsividade
-                className="relative w-full max-w-4xl h-auto flex flex-col items-center justify-center py-16 px-6 md:py-24 md:px-12"
+                className="relative w-full max-w-4xl h-auto flex flex-col items-center justify-center py-16 px-6 md:py-24 md:px-12 opacity-0" // Start with opacity 0 to prevent FOUC, GSAP will handle showing it
+                style={{ opacity: 0 }} // Inline style fallback
             >
                 {/* SVG Border Dinâmico */}
                 <svg
@@ -189,7 +243,7 @@ const WonderScreen = () => {
                         filter="url(#blurFilter)"
                         fill="transparent"
                         // vectorEffect garante que a espessura da linha não muda ao redimensionar
-                        vectorEffect="non-scaling-stroke" 
+                        vectorEffect="non-scaling-stroke"
                     />
                 </svg>
 

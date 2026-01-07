@@ -1,6 +1,15 @@
 "use client";
 import React, { useEffect, useState } from "react";
 
+/**
+ * ScrollProgressBar Component
+ * 
+ * A thin gradient line fixed at the top of the viewport indicating read progress.
+ * Calculates `(window.scrollY / totalHeight) * 100` to set width.
+ * 
+ * @component
+ * @returns {JSX.Element} Fixed top progress bar.
+ */
 const ScrollProgressBar = () => {
     const [scrollProgress, setScrollProgress] = useState(0);
 

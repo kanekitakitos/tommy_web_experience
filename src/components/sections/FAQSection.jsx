@@ -4,6 +4,19 @@ import { useState } from "react";
 import { Plus, X } from "lucide-react";
 import OverlayGlow from "@/components/effects/OverlayGlow";
 
+/**
+ * FAQSection Component
+ * 
+ * A clean, accordion-style list of Frequently Asked Questions.
+ * 
+ * Behavior:
+ * - Only one item open at a time (controlled by `openIndex` state).
+ * - Smooth height transitions using CSS `max-height` and `opacity`.
+ * - Rotating icon (+ / x) indicator.
+ * 
+ * @component
+ * @returns {JSX.Element} FAQ list.
+ */
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState(1);
 
@@ -34,7 +47,7 @@ export default function FAQSection() {
       <div className="pointer-events-none absolute inset-0 z-0">
         <OverlayGlow />
       </div>
-      
+
       {/* Heading */}
       {/* ALTERAÇÃO: text-3xl fixo em mobile para evitar textos minúsculos ou enormes */}
       <h2 className="z-10 text-3xl md:text-5xl text-center md:w-1/2 w-[90%] font-[poppinmed] text-white leading-tight">
@@ -95,7 +108,7 @@ export default function FAQSection() {
                 >
                   {/* Spacer desktop para alinhar a resposta com a pergunta */}
                   <div className="md:w-[35%] lg:w-[40%] md:block hidden shrink-0"></div>
-                  
+
                   {/* Texto da resposta */}
                   <p className="text-sm text-gray-700 whitespace-pre-line w-full md:w-3/4 leading-relaxed">
                     {item.a}

@@ -1,5 +1,21 @@
 import React from 'react';
 
+/**
+ * TestimonialCard Component
+ * 
+ * Displays a client review with their profile info and a hover glow effect.
+ * The card layout accommodates varying text lengths with a scrollable area if needed.
+ * 
+ * @component
+ * @param {Object} props
+ * @param {Object} props.testimonial - Data object.
+ * @param {string} props.testimonial.name - Client name.
+ * @param {string} props.testimonial.role - Client role/title.
+ * @param {string} props.testimonial.img - URL to avatar image.
+ * @param {string} props.testimonial.text - Review content.
+ * @param {string} props.testimonial.flag - Emoji flag (e.g. "🇺🇸").
+ * @param {string} props.testimonial.date - Date string.
+ */
 const TestimonialCard = ({ testimonial }) => {
     const { name, role, img, text, flag, date } = testimonial;
 

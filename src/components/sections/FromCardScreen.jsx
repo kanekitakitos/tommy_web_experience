@@ -1,7 +1,24 @@
 import { CheckCircle, XCircle } from "lucide-react";
 import OverlayGlow from "@/components/effects/OverlayGlow";
 
+/**
+ * FromCardScreen Component
+ * 
+ * Comparison section ("Before" vs "After") tailored for Creators.
+ * Highlights the transition from "Overwhelmed" (editing, inconsistent posting) to "Outstanding".
+ * 
+ * Structure:
+ * - Two cards displaying pain points (Before) vs benefits (After).
+ * - Visual cues (Red vs Green accents).
+ * 
+ * @component
+ * @returns {JSX.Element} The comparison section.
+ */
 export default function FromCardScreen() {
+  /**
+   * Pain points for Creators (Before).
+   * @type {string[]}
+   */
   const beforeList = [
     "Hours spent editing every single video",
     "Inconsistent posting schedules",
@@ -9,6 +26,10 @@ export default function FromCardScreen() {
     "Doing everything yourself",
   ];
 
+  /**
+   * Benefits for Creators (After).
+   * @type {string[]}
+   */
   const afterList = [
     "Timely delivery of professional content",
     "Consistent presence across all platforms",

@@ -4,6 +4,19 @@ import Button from "@/components/ui/Button";
 import Logo from "@/components/ui/Logo";
 import { LucideCheckCircle } from "lucide-react";
 
+/**
+ * FocusScreen Component
+ * 
+ * The "Hero" or introductory section for the Creator ("Focus on Creating") path.
+ * Similar structure to `CFocusScreen` but tailored for the B2C audience.
+ * 
+ * Features:
+ * - Large headline "Focus on Creating – Not Managing".
+ * - Tag list: "For Creators", "For Personal Brands", etc.
+ * 
+ * @component
+ * @returns {JSX.Element} Creator Hero section.
+ */
 const FocusScreen = () => {
     return (
         // ALTERAÇÃO: min-h-[100dvh] para suporte mobile correto e overflow-x-hidden

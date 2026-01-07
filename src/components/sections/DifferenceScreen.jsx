@@ -4,16 +4,30 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import OverlayGlow from "@/components/effects/OverlayGlow";
 
+/**
+ * DifferenceScreen Component
+ * 
+ * A impact metrics showcase section.
+ * Displays floating cards with stats (e.g., "50 Hours Saved", "1M+ Views").
+ * 
+ * Features:
+ * - Mouse parallax effect on background grids.
+ * - Floating/Hovering card animation using Sine waves.
+ * - Counting numbers animation (counter-up) upon scrolling into view.
+ * 
+ * @component
+ * @returns {JSX.Element} Interactive stats section.
+ */
 const DifferenceScreen = () => {
   const sectionRef = useRef(null);
   const gridRef = useRef(null);
   const gridSecondaryRef = useRef(null);
   const spotlightRef = useRef(null);
   const cardsContainerRef = useRef(null);
-  
+
   const boxesRef = useRef([]);
   const numbersRef = useRef([]);
-  const suffixesRef = useRef([]); 
+  const suffixesRef = useRef([]);
   const animationTimelineRef = useRef(null);
 
   const targetNumbers = [50, 100, 1000000];
@@ -78,7 +92,7 @@ const DifferenceScreen = () => {
         onStart: () => {
           // Lógica Card 3 (Views)
           if (i === 2) {
-             gsap.to(numObj, {
+            gsap.to(numObj, {
               val: targetNumbers[i],
               duration: 2.2, // Um pouco mais lento para apreciar a subida
               ease: "power1.inOut",
@@ -89,7 +103,7 @@ const DifferenceScreen = () => {
               onComplete: () => {
                 const el = numbersRef.current[i];
                 if (el) el.innerText = "1";
-                
+
                 const suffix = suffixesRef.current[i];
                 if (suffix) {
                   // Mostra o sufixo e anima
@@ -134,7 +148,7 @@ const DifferenceScreen = () => {
       </h3>
 
       <div ref={cardsContainerRef} className="w-full md:w-4/5 h-auto md:h-[50%] flex flex-col md:block items-center justify-center relative md:scale-95 scale-100 z-10 gap-6 md:gap-0 -mt-10 md:mt-0" style={{ perspective: "1000px" }}>
-        
+
         {/* Card 1: 50 Hours */}
         <div ref={(el) => (boxesRef.current[0] = el)} className="box relative md:absolute md:top-[55%] left-auto md:left-1/2 md:-translate-y-1/2 md:-translate-x-[125%] md:-rotate-3 rotate-0 w-52 md:w-72 aspect-square bg-[url('/assets/images/glowbox.svg')] bg-center bg-no-repeat z-10 opacity-0 will-change-transform drop-shadow-[0_0_30px_rgba(168,85,247,0.4)] flex items-center justify-center backdrop-blur-md bg-black/20 border border-white/5 rounded-3xl mx-auto">
           <div className="w-[85%] font-[poppinsemi] flex flex-col items-center">
@@ -166,14 +180,14 @@ const DifferenceScreen = () => {
             <div className="flex flex-col items-center gap-0 w-full">
               {/* Adicionado justify-center e w-full para segurar a posição */}
               <div className="flex items-baseline justify-center w-full">
-                <span 
+                <span
                   ref={(el) => (numbersRef.current[2] = el)}
 
                   className="tabular-nums text-white md:text-6xl text-4xl font-bold tracking-tighter drop-shadow-[0_0_20px_rgba(255,255,255,0.8)] text-center"
                 >
                   0
                 </span>
-                <span 
+                <span
                   ref={(el) => (suffixesRef.current[2] = el)}
                   className="md:text-4xl text-xl text-purple-400 font-bold ml-1 drop-shadow-[0_0_15px_rgba(168,85,247,0.9)]"
                 >

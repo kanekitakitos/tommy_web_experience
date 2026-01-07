@@ -6,6 +6,19 @@ import OverlayGlow from "@/components/effects/OverlayGlow";
 const efficiencyWords = ["Efficiency", "Results", "Revenue", "Possibilities"];
 const costWords = ["Costs", "Time", "Effort", "Hassle"];
 
+/**
+ * TextScreen Component
+ * 
+ * An animated typography section that cycles through key value propositions.
+ * Uses GSAP to animate words sliding in/out while dynamically adjusting the container width.
+ * 
+ * Animations:
+ * - Efficiency Loop: Cycles "Efficiency", "Results", etc.
+ * - Cost Loop: Cycles "Costs", "Time", etc.
+ * 
+ * @component
+ * @returns {JSX.Element} The animated text section.
+ */
 const TextScreen = () => {
   const effRef = useRef(null);
   const costRef = useRef(null);
@@ -16,7 +29,14 @@ const TextScreen = () => {
   const effTL = useRef(null);
   const costTL = useRef(null);
 
-  // Function for smooth width measurement + animation (like HomeScreen)
+  /**
+   * Animates a word transition: slides old word up, expands width for new word, slides new word in.
+   * 
+   * @param {React.MutableRefObject} ref - Ref to the text element.
+   * @param {React.MutableRefObject} containerRef - Ref to the width-constrained container.
+   * @param {string[]} words - Array of words to cycle through.
+   * @param {React.MutableRefObject} indexRef - Ref tracking current word index.
+   */
   const animateWord = (ref, containerRef, words, indexRef) => {
     const nextIndex = (indexRef.current + 1) % words.length;
     const nextWord = words[nextIndex];

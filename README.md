@@ -23,7 +23,7 @@ A high-performance, interactive web application built with **Next.js**, focused 
 
 ## 📂 Project Structure
 
-The project follows a modular architecture designed for scalability and component reusability.
+The project follows a modular architecture designed for scalability and component reusability. Below is a detailed breakdown of the `src` directory:
 
 ```bash
 src/
@@ -44,10 +44,10 @@ src/
 
 ### Key Directories Explained
 
-- **`src/components/sections`**: Contains the major blocks of the landing pages. Each file generally corresponds to a "screen" or "slide" in the scroll flow.
-- **`src/components/ui`**: Holds the atomic design elements like Buttons and Cards that are used across multiple sections.
-- **`src/components/effects`**: Specialized components purely for visual enhancements (background glows, animations).
-- **`src/pages`**: Maps directly to the URL structure. `b2b.js` and `b2c.js` are distinct landing pages tailored for specific audiences.
+- **`src/components/sections`**: This is where the bulk of the UI lives. Files prefixed with `C` (e.g., `CCTASection`) are tailored variants for the **Creators** (B2C) path, while their counterparts are for **Businesses** (B2B).
+- **`src/components/ui`**: Atomic components used across multiple sections to ensure design consistency (buttons, cards, logos).
+- **`src/components/effects`**: Contains complex visual logic, often involving WebGL (`Orb.jsx`) or Canvas, isolated to prevent performance impact on main content.
+- **`src/pages`**: Maps directly to URLs. `b2b` and `b2c` serve as alternative entry points with tailored content strategies.
 
 ---
 

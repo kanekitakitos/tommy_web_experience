@@ -1,5 +1,21 @@
 import React from 'react'
 
+/**
+ * Button Component
+ * 
+ * A versatile button with premium visual effects including:
+ * - "Liquid sweep" shine animation on hover.
+ * - Double-layered text with vertical slide animation (Animation Tray).
+ * - Book Meeting mode (opens Calendly) or custom onClick handler.
+ * 
+ * @component
+ * @param {Object} props
+ * @param {string} props.text - The label text (duplicated internally for animation).
+ * @param {string} [props.className] - Additional Tailwind classes.
+ * @param {boolean} [props.isBookMeeting=false] - If true, opens the Calendly link.
+ * @param {Function} [props.onClick] - Click handler if not booking.
+ * @param {React.Ref} ref - Forwarded ref.
+ */
 const Button = React.forwardRef(({ text, className, isBookMeeting = false, onClick }, ref) => {
   const handleClick = (e) => {
     if (isBookMeeting) {

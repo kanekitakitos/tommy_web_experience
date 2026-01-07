@@ -1,6 +1,25 @@
 import { useEffect, useRef } from 'react';
 import { Renderer, Program, Mesh, Triangle, Vec3 } from 'ogl';
 
+/**
+ * Orb Component
+ * 
+ * A WebGL-based interactive sphere rendered using OGL.
+ * Features complex shader visual effects including liquid-like noise, color shifts, and mouse interaction.
+ * 
+ * Key Mechanics:
+ * - Uses a custom ShaderProgram (`vert` & `frag`) to displace vertices and color pixels.
+ * - `ResizeObserver` ensures it scales correctly with the container.
+ * - Mouse interaction distorts the UVs to create a "magnetic" pull effect.
+ * - Fallback for mobile: uses `forceHoverState` logic if needed or touch events.
+ * 
+ * @component
+ * @param {Object} props
+ * @param {number} [props.hue=0] - Color shift angle in degrees (0 = base purple).
+ * @param {number} [props.hoverIntensity=0.2] - Strength of the mouse interaction distortion.
+ * @param {boolean} [props.rotateOnHover=true] - Whether to auto-rotate logic when hovered.
+ * @param {boolean} [props.forceHoverState=false] - For mobile/debugging, force the "active" visual state.
+ */
 export default function Orb({ hue = 0, hoverIntensity = 0.2, rotateOnHover = true, forceHoverState = false }) {
   const ctnDom = useRef(null);
 

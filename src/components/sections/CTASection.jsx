@@ -1,9 +1,23 @@
 import OverlayGlow from "@/components/effects/OverlayGlow";
 import Button from "@/components/ui/Button";
 
+/**
+ * CTASection Component
+ * 
+ * The main Call-to-Action section, likely used on the Home/Creator page.
+ * Encourages users to "Book a Meeting" with a focus on competing with full-time teams.
+ * 
+ * Design:
+ * - Full-screen height (min-h-screen) with centered content.
+ * - Large typography and a prominent CTA button.
+ * - Background glow effect.
+ * 
+ * @component
+ * @returns {JSX.Element} The rendered CTA section.
+ */
 export default function CTASection() {
   return (
-    <section 
+    <section
       // ALTERAÇÃO: min-h-[60dvh] em mobile para compactar a secção, py-24 em vez de py-40
       className="w-full flex flex-col items-center justify-center text-white text-center px-4 relative min-h-[60dvh] md:min-h-screen py-24 md:py-0"
     >
@@ -14,7 +28,7 @@ export default function CTASection() {
 
       {/* Container para limitar a largura em ecrãs grandes */}
       <div className="z-10 flex flex-col items-center max-w-5xl mx-auto">
-        
+
         {/* Main Heading */}
         {/* ALTERAÇÃO: text-3xl em mobile para garantir legibilidade imediata, text-5xl/6xl em desktop */}
         <h2 className="text-3xl md:text-5xl lg:text-6xl text-center font-[poppinmed] text-white leading-tight md:leading-tight">
@@ -33,7 +47,7 @@ export default function CTASection() {
         <div className="md:scale-110 transition-transform duration-300">
           <Button text={"Book a Meeting"} isBookMeeting={true} />
         </div>
-        
+
       </div>
 
     </section>

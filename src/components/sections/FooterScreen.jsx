@@ -11,6 +11,19 @@ import OverlayGlow from "@/components/effects/OverlayGlow";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
+/**
+ * FooterScreen Component
+ * 
+ * The global footer of the application.
+ * Contains navigation links, social media icons, and legal pages (Privacy/Terms).
+ * 
+ * Animations:
+ * - ScrollTrigger-based entry animation: Elements (Title, Button, Links) slide up and fade in as the user reaches the bottom.
+ * - Text splitting for the title "Modern Solutions".
+ * 
+ * @component
+ * @returns {JSX.Element} The site footer.
+ */
 const FooterScreen = () => {
     const titleRef = useRef(null);
     const buttonRef = useRef(null);

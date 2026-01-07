@@ -2,6 +2,19 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 
+/**
+ * InteractiveGrid Component
+ * 
+ * Renders a fixed background grid with a dynamic spotlight effect that follows the mouse.
+ * 
+ * Layers:
+ * 1. SVG Grid Pattern (base).
+ * 2. Noise Texture (overlay for realism).
+ * 3. Spotlight (radial gradient tracking mouse coordinates via GSAP).
+ * 
+ * @component
+ * @returns {JSX.Element} Fixed background layers.
+ */
 const InteractiveGrid = () => {
     const spotlightRef = useRef(null);
 

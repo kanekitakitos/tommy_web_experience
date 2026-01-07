@@ -4,6 +4,19 @@ import { gsap } from "gsap";
 import SpotlightCard from "@/components/ui/SpotlightCard";
 import OverlayGlow from "@/components/effects/OverlayGlow";
 
+/**
+ * CardScreen Component
+ * 
+ * The navigation hub allowing users to choose between "Business" (B2B) and "Creator" paths.
+ * Features two large `SpotlightCard` elements that light up on hover.
+ * 
+ * Animations:
+ * - Constant glowing border effect using GSAP `boxShadow` animation.
+ * - Interactive spotlight tracking via the child component.
+ * 
+ * @component
+ * @returns {JSX.Element} Twin card selection screen.
+ */
 const CardScreen = () => {
   const card1Ref = useRef(null);
   const card2Ref = useRef(null);

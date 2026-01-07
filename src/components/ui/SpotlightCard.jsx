@@ -2,6 +2,25 @@
 import { useRef } from "react";
 import gsap from "gsap";
 
+/**
+ * SpotlightCard Component
+ * 
+ * A highly interactive card container that tracks mouse movement.
+ * 
+ * Features:
+ * - Radial Gradient Spotlight: Follows the cursor position.
+ * - 3D Tilt Effect: Card rotates slightly based on cursor relative to center.
+ * - Specular Highlight: Faint gloss moving opposite to cursor.
+ * - Elevation: Lifts up (box-shadow) on hover.
+ * 
+ * Uses GSAP for performant animations (no React state re-renders).
+ * 
+ * @component
+ * @param {Object} props
+ * @param {React.ReactNode} props.children - Card content.
+ * @param {string} [props.className] - Additional styles.
+ * @param {string} [props.spotlightColor] - Color of the glowing spotlight effect.
+ */
 const SpotlightCard = ({
   children,
   className = "",

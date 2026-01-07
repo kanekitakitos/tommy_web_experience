@@ -1,7 +1,27 @@
 import { CheckCircle, XCircle } from "lucide-react";
 import OverlayGlow from "@/components/effects/OverlayGlow";
 
+/**
+ * CFromCardScreen Component
+ * 
+ * A comparison section designed to highlight the "Before" vs "After" state of working with New Gen Services.
+ * This component is specifically tailored for the Creator/Business comparison context.
+ * 
+ * Structure:
+ * - Two main cards: "Before New Gen Services" (Pain points) and "After Partnering With Us" (Solutions/Benefits).
+ * - The "After" card features enhanced styling (green glow, ambient light) to visually signify improvement.
+ * - Responsive layout: Stacks vertically on mobile, side-by-side on tablet/desktop.
+ * 
+ * @component
+ * @returns {JSX.Element} The rendered comparison/transformation section.
+ */
 export default function CFromCardScreen() {
+
+  /**
+   * List of pain points experienced before using the service.
+   * Rendered in the "Before" card with X icons.
+   * @type {string[]}
+   */
   const beforeList = [
     "Customer calls and inquiries handled manually",
     "Disconnected tools and fragmented internal workflows",
@@ -10,6 +30,11 @@ export default function CFromCardScreen() {
     "Website not effectively supporting business objectives"
   ];
 
+  /**
+   * List of benefits experienced after partnering with the service.
+   * Rendered in the "After" card with Check icons and green highlights.
+   * @type {string[]}
+   */
   const afterList = [
     "AI voice agents managing customer calls and inquiries",
     "Integrated automations connecting systems and workflows",
@@ -27,7 +52,6 @@ export default function CFromCardScreen() {
         <OverlayGlow />
       </div>
 
-      {/* Título Principal */}
       {/* Título Principal */}
       <h2 className='z-10 text-3xl md:text-4xl lg:text-5xl text-center md:w-3/4 lg:w-2/3 w-full font-[poppinmed] text-white leading-tight mb-4'>
         Helping Your Business Stand Out

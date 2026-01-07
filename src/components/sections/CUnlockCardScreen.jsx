@@ -11,8 +11,34 @@ import {
 import Button from "@/components/ui/Button";
 
 
+/**
+ * CUnlockCardScreen Component
+ * 
+ * This component displays a grid of service cards tailored for the "Creator" (B2C) audience.
+ * It showcases various AI and digital services offered by New Gen Services, such as AI Voice Agents,
+ * Automations, Marketing, Branding, and Web Design.
+ * 
+ * Key Features:
+ * - Responsive Grid Layout: Adapts from 1 column (mobile) to 2 columns (tablet) and 3 columns (desktop).
+ * - Interactive Cards: Hover effects with glow, scale, and border transitions.
+ * - Dynamic Content: Renders cards from a configuration array for easy updates.
+ * - Visual Effects: Uses `OverlayGlow` for background ambience.
+ * 
+ * @component
+ * @returns {JSX.Element} The rendered section containing the features grid.
+ */
 const CUnlockCardScreen = () => {
 
+  /**
+   * List of service cards to be displayed.
+   * Each object contains:
+   * @type {Array<Object>}
+   * @property {JSX.Element} icon - The Lucide React icon component.
+   * @property {string} title - The title of the service.
+   * @property {string} desc - A brief description of the service.
+   * @property {string[]} points - A list of key benefits/features.
+   * @property {string} btn - The text for the call-to-action button.
+   */
   const cards = [
     {
       icon: <Bot className="w-6 h-6 text-white" />,

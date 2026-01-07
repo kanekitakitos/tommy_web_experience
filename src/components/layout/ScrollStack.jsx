@@ -13,6 +13,28 @@ export const ScrollStackItem = ({ children, itemClassName = '' }) => (
   </div>
 );
 
+/**
+ * ScrollStack Component
+ * 
+ * A specialized layout component that creates a "stacking cards" effect on scroll.
+ * As the user scrolls down, items stick to the top and stack on top of each other with
+ * a slight scale and blur effect, creating depth.
+ * 
+ * Features:
+ * - Integration with Lenis for smooth scrolling.
+ * - Manual calculation of transforms (scale, rotation, blur) based on scroll position.
+ * - Optimized with `requestAnimationFrame` and `will-change`.
+ * 
+ * @component
+ * @param {Object} props
+ * @param {React.ReactNode} props.children - ScollStackItems to render.
+ * @param {string} [props.className] - Container class.
+ * @param {number} [props.itemDistance=100] - Pixel distance between stacked items.
+ * @param {number} [props.itemScale=0.03] - Scale difference per stacked item.
+ * @param {number} [props.itemStackDistance=30] - Visible offset when stacked.
+ * @param {string} [props.stackPosition='20%'] - Viewport percentage where stacking occurs.
+ * @param {Function} [props.onStackComplete] - Callback when animation finishes.
+ */
 const ScrollStack = ({
   children,
   className = '',
@@ -306,21 +328,21 @@ const ScrollStack = ({
   // Container styles based on scroll mode
   const containerStyles = useWindowScroll
     ? {
-        // Global scroll mode - no overflow constraints
-        overscrollBehavior: 'contain',
-        WebkitOverflowScrolling: 'touch',
-        WebkitTransform: 'translateZ(0)',
-        transform: 'translateZ(0)'
-      }
+      // Global scroll mode - no overflow constraints
+      overscrollBehavior: 'contain',
+      WebkitOverflowScrolling: 'touch',
+      WebkitTransform: 'translateZ(0)',
+      transform: 'translateZ(0)'
+    }
     : {
-        // Container scroll mode - original behavior
-        overscrollBehavior: 'contain',
-        WebkitOverflowScrolling: 'touch',
-        scrollBehavior: 'smooth',
-        WebkitTransform: 'translateZ(0)',
-        transform: 'translateZ(0)',
-        willChange: 'scroll-position'
-      };
+      // Container scroll mode - original behavior
+      overscrollBehavior: 'contain',
+      WebkitOverflowScrolling: 'touch',
+      scrollBehavior: 'smooth',
+      WebkitTransform: 'translateZ(0)',
+      transform: 'translateZ(0)',
+      willChange: 'scroll-position'
+    };
 
   const containerClassName = useWindowScroll
     ? `relative w-full ${className}`.trim()

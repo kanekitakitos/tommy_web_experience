@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono } from "next/font/google";
+
 import HomeScreen from "@/components/sections/HomeScreen";
 import CardScreen from "@/components/sections/CardScreen";
 import DifferenceScreen from "@/components/sections/DifferenceScreen";
@@ -9,19 +9,25 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
+/**
+ * Home Page (Landing)
+ * 
+ * The main entry point of the application. It orchestrates a full-screen scroll-snapping experience
+ * using GSAP (GreenSock Animation Platform) and ScrollTrigger.
+ * 
+ * Flow:
+ * 1. Checks screen width on mount and reloads if changed (to handle mobile address bar resizing quirks).
+ * 2. Initializes GSAP ScrollToPlugin and ScrollTrigger.
+ * 3. Sets up a custom scroll/touch handler to intercept native scrolling and "snap" to the next section.
+ * 4. Manages the `DifferenceScreen` special case where internal scrolling might be needed before snapping.
+ * 
+ * @component
+ * @returns {JSX.Element} The full-page layout with stacked sections.
+ */
 export default function Home() {
+  /** @type {React.MutableRefObject<HTMLElement[]>} Refs to all section DOM elements */
   const sectionsRef = useRef([]);
+  /** @type {React.MutableRefObject<number>} Index of the currently visible section */
   const currentSection = useRef(0);
   const isScrolling = useRef(false);
   const previousWidth = useRef(typeof window !== "undefined" ? window.innerWidth : 0);
@@ -41,7 +47,7 @@ export default function Home() {
 
   // rest of your GSAP scroll logic
   useEffect(() => {
-    // Mobile check removed to enable animation on all devices
+
 
     // Optimized GSAP Config for Mobile
     ScrollTrigger.config({ ignoreMobileResize: true });

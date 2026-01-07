@@ -9,6 +9,19 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
 
+/**
+ * TestimonialsSwiper Component
+ * 
+ * A horizontal carousel of client testimonials using `Swiper.js`.
+ * 
+ * Configuration:
+ * - Effect: 'coverflow' (3D depth effect).
+ * - Autoplay: Cycles every 4 seconds.
+ * - Responsive: Shows 1 slide on mobile, 3 centered slides on desktop.
+ * 
+ * @component
+ * @returns {JSX.Element} Interactive testimonial slider.
+ */
 export default function TestimonialsSwiper() {
   const testimonials = [
     {
