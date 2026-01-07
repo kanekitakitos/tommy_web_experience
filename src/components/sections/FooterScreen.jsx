@@ -35,8 +35,7 @@ const FooterScreen = () => {
             scrollTrigger: {
                 trigger: ".footer-container",
                 start: "top 85%",
-                end: "top 45%",
-                scrub: 0.8,
+                toggleActions: "play none none reverse",
             },
         });
 
@@ -50,6 +49,7 @@ const FooterScreen = () => {
                 scale: 0.8,
                 stagger: 0.03,
                 ease: "power2.out",
+                duration: 0.6,
             },
             0
         );
@@ -62,6 +62,7 @@ const FooterScreen = () => {
                 opacity: 0,
                 scale: 0.9,
                 ease: "back.out(1.5)",
+                duration: 0.6,
             },
             0.2
         );
@@ -73,6 +74,7 @@ const FooterScreen = () => {
                 y: 30,
                 opacity: 0,
                 ease: "power2.out",
+                duration: 0.6,
             },
             0.3
         );
@@ -85,13 +87,18 @@ const FooterScreen = () => {
                 opacity: 0,
                 stagger: 0.1,
                 ease: "power2.out",
+                duration: 0.6,
             },
             0.5
         );
 
         // Force ScrollTrigger to refresh its positions after the animations are set up.
         // This is crucial for client-side navigation where the DOM layout might change.
-        ScrollTrigger.refresh();
+        const timer = setTimeout(() => {
+            ScrollTrigger.refresh();
+        }, 500);
+
+        return () => clearTimeout(timer);
 
     }, []);
 
