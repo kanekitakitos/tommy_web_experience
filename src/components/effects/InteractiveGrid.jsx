@@ -44,8 +44,8 @@ const InteractiveGrid = () => {
             {/* Base Grid Background */}
             <div className="absolute inset-0 bg-[url('/assets/images/grids.svg')] bg-center bg-repeat opacity-60"></div>
 
-            {/* Subtle Noise Texture */}
-            <div className="absolute inset-0 bg-[url('/assets/images/noise.png')] bg-center opacity-[0.2] mix-blend-overlay"></div>
+            {/* Subtle Noise Texture - CSS Optimized */}
+            <div className="absolute inset-0 bg-noise bg-center opacity-[0.2] mix-blend-overlay"></div>
 
             {/* Interactive Spotlight */}
             <div

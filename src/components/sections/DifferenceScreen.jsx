@@ -141,7 +141,7 @@ const DifferenceScreen = () => {
       <div ref={gridSecondaryRef} className="absolute inset-0 z-0 bg-[url('/assets/images/grids.svg')] bg-center bg-repeat opacity-15 scale-[1.7] pointer-events-none blur-[2px]"></div>
       <div ref={spotlightRef} className="absolute top-0 left-0 right-0 h-[800px] z-0 pointer-events-none bg-[radial-gradient(circle,rgba(168,85,247,0.25)_0%,transparent_70%)] blur-[80px]" style={{ transform: "translateY(0)" }}></div>
       <div className="absolute inset-0 z-1 pointer-events-none"><OverlayGlow className="opacity-40" /></div>
-      <div className="fixed top-0 left-0 z-1 h-screen w-full bg-[url('/assets/images/noise.png')] bg-cover bg-center pointer-events-none opacity-20"></div>
+      <div className="fixed top-0 left-0 z-1 h-screen w-full bg-noise bg-cover bg-center pointer-events-none opacity-20"></div>
 
       <h3 className="md:text-4xl text-2xl text-center font-bold w-[90%] md:w-4/5 z-10 drop-shadow-lg mt-0 md:-mt-52 mb-1 md:mb-0 px-4 leading-tight">
         This is how we are making a difference

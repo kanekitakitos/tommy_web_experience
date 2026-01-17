@@ -227,6 +227,7 @@ body::-webkit-scrollbar {
 
 /* Ensure root and main wrapper fill viewport so effects have space on mobile */
 #__next,
+/* Interacture Grid styles */
 .main {
   min-height: 100vh;
   width: 100%;

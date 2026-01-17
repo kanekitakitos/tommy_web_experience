@@ -14,6 +14,9 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'react-icons', 'gsap'],
+  },
   webpack: (config) => {
     config.externals = [...(config.externals || []), { canvas: 'canvas' }];
     return config;
