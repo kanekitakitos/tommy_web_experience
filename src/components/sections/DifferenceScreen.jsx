@@ -35,104 +35,104 @@ const DifferenceScreen = () => {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    const handleMouseMove = (e) => {
-      if (window.innerWidth < 768) return;
-      const { clientY } = e;
-      const targetY = (clientY / window.innerHeight - 0.5);
+    let ctx = gsap.context(() => {
+      const handleMouseMove = (e) => {
+        if (window.innerWidth < 768) return;
+        const { clientY } = e;
+        const targetY = (clientY / window.innerHeight - 0.5);
 
-      gsap.to(gridRef.current, { y: targetY * 200, duration: 2, ease: "power2.out" });
-      gsap.to(gridSecondaryRef.current, { y: targetY * 80, duration: 2.5, ease: "power2.out" });
-      gsap.to(spotlightRef.current, { y: clientY - 400, opacity: 0.6, duration: 1, ease: "power2.out" });
-      gsap.to(cardsContainerRef.current, { rotationX: -targetY * 15, duration: 1.5, ease: "power2.out" });
-    };
+        gsap.to(gridRef.current, { y: targetY * 200, duration: 2, ease: "power2.out", overwrite: "auto" });
+        gsap.to(gridSecondaryRef.current, { y: targetY * 80, duration: 2.5, ease: "power2.out", overwrite: "auto" });
+        gsap.to(spotlightRef.current, { y: clientY - 400, opacity: 0.6, duration: 1, ease: "power2.out", overwrite: "auto" });
+        gsap.to(cardsContainerRef.current, { rotationX: -targetY * 15, duration: 1.5, ease: "power2.out", overwrite: "auto" });
+      };
 
-    window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("mousemove", handleMouseMove);
 
-    // Setup Boxes
-    boxesRef.current.forEach((box) => {
-      if (!box) return;
-      gsap.set(box, { opacity: 0, y: 50, scale: 0.85, rotationX: -20, filter: "blur(10px)", transformOrigin: "center center" });
-    });
+      // Setup Boxes
+      boxesRef.current.forEach((box) => {
+        if (!box) return;
+        gsap.set(box, { opacity: 0, y: 50, scale: 0.85, rotationX: -20, filter: "blur(10px)", transformOrigin: "center center" });
+      });
 
-    // Setup Numbers
-    numbersRef.current.forEach((number) => {
-      if (number) {
-        number.innerText = "0";
-        gsap.set(number, { opacity: 0, scale: 0.8 });
-      }
-    });
-
-    // Setup Sufixo Card 3 (M+): Começa com display 'none' para não atrapalhar o centro
-    if (suffixesRef.current[2]) {
-      gsap.set(suffixesRef.current[2], { display: "none", opacity: 0, scale: 0 });
-    }
-
-    if (!sectionRef.current) return;
-
-    const startFloating = (box, i) => {
-      gsap.to(box, { y: "-=12", duration: 2.5 + i * 0.3, repeat: -1, yoyo: true, ease: "sine.inOut" });
-    };
-
-    const entTl = gsap.timeline({
-      scrollTrigger: { trigger: sectionRef.current, start: "top 70%", onEnter: () => entTl.play(), once: true }
-    }).pause();
-
-    boxesRef.current.forEach((box, i) => {
-      if (!box) return;
-      const numObj = { val: 0 };
-      const startTime = i * 0.3;
-
-      entTl.to(box, {
-        opacity: 1, y: 0, scale: 1, rotationX: 0, filter: "blur(0px)", duration: 1.2, ease: "power3.out",
-        onStart: () => startFloating(box, i)
-      }, startTime);
-
-      entTl.to(numbersRef.current[i], {
-        opacity: 1, scale: 1, duration: 0.8, ease: "power2.out",
-        onStart: () => {
-          // Lógica Card 3 (Views)
-          if (i === 2) {
-            gsap.to(numObj, {
-              val: targetNumbers[i],
-              duration: 2.2, // Um pouco mais lento para apreciar a subida
-              ease: "power1.inOut",
-              onUpdate: () => {
-                const el = numbersRef.current[i];
-                if (el) el.innerText = Math.floor(numObj.val).toLocaleString("de-DE");
-              },
-              onComplete: () => {
-                const el = numbersRef.current[i];
-                if (el) el.innerText = "1";
-
-                const suffix = suffixesRef.current[i];
-                if (suffix) {
-                  // Mostra o sufixo e anima
-                  gsap.set(suffix, { display: "inline-block" });
-                  gsap.to(suffix, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.7)" });
-                }
-              }
-            });
-          } else {
-            // Lógica normal (Card 1 e 2)
-            gsap.to(numObj, {
-              val: targetNumbers[i],
-              duration: 1.5,
-              ease: "power2.out",
-              onUpdate: () => {
-                const el = numbersRef.current[i];
-                if (el) el.innerText = Math.floor(numObj.val).toLocaleString("de-DE");
-              },
-            });
-          }
+      // Setup Numbers
+      numbersRef.current.forEach((number) => {
+        if (number) {
+          number.innerText = "0";
+          gsap.set(number, { opacity: 0, scale: 0.8 });
         }
-      }, startTime + 0.4);
-    });
+      });
 
-    animationTimelineRef.current = entTl;
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      if (animationTimelineRef.current) animationTimelineRef.current.kill();
-    };
+      // Setup Sufixo Card 3 (M+): Começa com display 'none' para não atrapalhar o centro
+      if (suffixesRef.current[2]) {
+        gsap.set(suffixesRef.current[2], { display: "none", opacity: 0, scale: 0 });
+      }
+
+      const startFloating = (box, i) => {
+        gsap.to(box, { y: "-=12", duration: 2.5 + i * 0.3, repeat: -1, yoyo: true, ease: "sine.inOut" });
+      };
+
+      const entTl = gsap.timeline({
+        scrollTrigger: { trigger: sectionRef.current, start: "top 70%", onEnter: () => entTl.play(), once: true }
+      }).pause();
+
+      boxesRef.current.forEach((box, i) => {
+        if (!box) return;
+        const numObj = { val: 0 };
+        const startTime = i * 0.3;
+
+        entTl.to(box, {
+          opacity: 1, y: 0, scale: 1, rotationX: 0, filter: "blur(0px)", duration: 1.2, ease: "power3.out",
+          onStart: () => startFloating(box, i)
+        }, startTime);
+
+        entTl.to(numbersRef.current[i], {
+          opacity: 1, scale: 1, duration: 0.8, ease: "power2.out",
+          onStart: () => {
+            // Lógica Card 3 (Views)
+            if (i === 2) {
+              gsap.to(numObj, {
+                val: targetNumbers[i],
+                duration: 2.2, // Um pouco mais lento para apreciar a subida
+                ease: "power1.inOut",
+                onUpdate: () => {
+                  const el = numbersRef.current[i];
+                  if (el) el.innerText = Math.floor(numObj.val).toLocaleString("de-DE");
+                },
+                onComplete: () => {
+                  const el = numbersRef.current[i];
+                  if (el) el.innerText = "1";
+
+                  const suffix = suffixesRef.current[i];
+                  if (suffix) {
+                    // Mostra o sufixo e anima
+                    gsap.set(suffix, { display: "inline-block" });
+                    gsap.to(suffix, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.7)" });
+                  }
+                }
+              });
+            } else {
+              // Lógica normal (Card 1 e 2)
+              gsap.to(numObj, {
+                val: targetNumbers[i],
+                duration: 1.5,
+                ease: "power2.out",
+                onUpdate: () => {
+                  const el = numbersRef.current[i];
+                  if (el) el.innerText = Math.floor(numObj.val).toLocaleString("de-DE");
+                },
+              });
+            }
+          }
+        }, startTime + 0.4);
+      });
+
+      return () => {
+        window.removeEventListener("mousemove", handleMouseMove);
+      };
+    }, sectionRef); // Scope to section
+
+    return () => ctx.revert();
   }, []);
 
   return (

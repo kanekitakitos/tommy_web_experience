@@ -218,9 +218,10 @@ export default function Orb({ hue = 0, hoverIntensity = 0.2, rotateOnHover = tru
 
     const mesh = new Mesh(gl, { geometry, program });
 
+    // Use ResizeObserver for reliable reflow-driven resize events (better than window.resize alone)
     function resize() {
       if (!container) return;
-      const dpr = window.devicePixelRatio || 1;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2); // Cap DPR to 2 for performance
 
       // Prefer getBoundingClientRect for accurate layout-driven sizes
       const rect = container.getBoundingClientRect();
@@ -248,13 +249,12 @@ export default function Orb({ hue = 0, hoverIntensity = 0.2, rotateOnHover = tru
       program.uniforms.globalScale.value = scale;
     }
 
-    // Use ResizeObserver for reliable reflow-driven resize events (better than window.resize alone)
     let ro;
     if (typeof ResizeObserver !== 'undefined') {
       ro = new ResizeObserver(() => resize());
       ro.observe(container);
     }
-    window.addEventListener('resize', resize);
+    // removed redundant window resize listener
     // call once to initialize
     resize();
 
@@ -262,6 +262,7 @@ export default function Orb({ hue = 0, hoverIntensity = 0.2, rotateOnHover = tru
     let lastTime = 0;
     let currentRot = 0;
     const rotationSpeed = 0.3;
+    let isVisible = true;
 
     const handleMouseMove = e => {
       const rect = container.getBoundingClientRect();
@@ -296,11 +297,20 @@ export default function Orb({ hue = 0, hoverIntensity = 0.2, rotateOnHover = tru
     container.addEventListener('touchmove', handleMouseMove, { passive: true });
     container.addEventListener('touchend', handleMouseLeave);
 
+    // Pause when offscreen
+    const observer = new IntersectionObserver(([entry]) => {
+      isVisible = entry.isIntersecting;
+    });
+    observer.observe(container);
+
     let rafId;
     const isMobileDetected = typeof navigator !== 'undefined' && (navigator.maxTouchPoints > 0 || /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent));
 
     const update = t => {
       rafId = requestAnimationFrame(update);
+
+      if (!isVisible) return; // Skip rendering if off-screen
+
       const dt = (t - lastTime) * 0.001;
       lastTime = t;
       program.uniforms.iTime.value = t * 0.001;
@@ -328,7 +338,8 @@ export default function Orb({ hue = 0, hoverIntensity = 0.2, rotateOnHover = tru
 
     return () => {
       cancelAnimationFrame(rafId);
-      window.removeEventListener('resize', resize);
+      if (ro) ro.disconnect();
+      observer.disconnect();
       container.removeEventListener('mousemove', handleMouseMove);
       container.removeEventListener('mouseleave', handleMouseLeave);
       container.removeChild(gl.canvas);

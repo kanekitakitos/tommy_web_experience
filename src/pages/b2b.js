@@ -1,10 +1,12 @@
 import React, { useEffect, useRef } from "react";
-import TestimonialsSwiper from "@/components/sections/TestimonialsSwiper";
+import dynamic from 'next/dynamic';
 import CFocusScreen from "@/components/sections/CFocusScreen";
-import CUnlockCardScreen from "@/components/sections/CUnlockCardScreen";
-import CFromCardScreen from "@/components/sections/CFromCardScreen";
-import CCTASection from "@/components/sections/CCTASection";
-import FooterScreen from "@/components/sections/FooterScreen";
+
+const TestimonialsSwiper = dynamic(() => import("@/components/sections/TestimonialsSwiper"), { ssr: false });
+const CUnlockCardScreen = dynamic(() => import("@/components/sections/CUnlockCardScreen"));
+const CFromCardScreen = dynamic(() => import("@/components/sections/CFromCardScreen"));
+const CCTASection = dynamic(() => import("@/components/sections/CCTASection"));
+const FooterScreen = dynamic(() => import("@/components/sections/FooterScreen"));
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";

@@ -1,14 +1,17 @@
 
-import HomeScreen from "@/components/sections/HomeScreen";
-import CardScreen from "@/components/sections/CardScreen";
-import DifferenceScreen from "@/components/sections/DifferenceScreen";
-import WonderScreen from "@/components/sections/WonderScreen";
-import FooterScreen from "@/components/sections/FooterScreen";
-import TextScreen from "@/components/sections/TextScreen";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import dynamic from 'next/dynamic';
+
+const HomeScreen = dynamic(() => import("@/components/sections/HomeScreen"));
+const CardScreen = dynamic(() => import("@/components/sections/CardScreen"));
+const DifferenceScreen = dynamic(() => import("@/components/sections/DifferenceScreen"));
+const WonderScreen = dynamic(() => import("@/components/sections/WonderScreen"));
+const FooterScreen = dynamic(() => import("@/components/sections/FooterScreen"));
+const TextScreen = dynamic(() => import("@/components/sections/TextScreen"));
+
 /**
  * Home Page (Landing)
  * 
