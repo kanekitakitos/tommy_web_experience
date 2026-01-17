@@ -194,7 +194,12 @@ export default function Orb({ hue = 0, hoverIntensity = 0.2, rotateOnHover = tru
     const container = ctnDom.current;
     if (!container) return;
 
-    const renderer = new Renderer({ alpha: true, premultipliedAlpha: false });
+
+    // Instead, we cap DPR aggressively on mobile to maintain performance while keeping visuals.
+    const isMobile = typeof window !== 'undefined' && window.matchMedia("(max-width: 768px)").matches;
+    const maxDpr = isMobile ? 1.0 : 2.0;
+
+    const renderer = new Renderer({ alpha: true, premultipliedAlpha: false, dpr: Math.min(window.devicePixelRatio, maxDpr) });
     const gl = renderer.gl;
     gl.clearColor(0, 0, 0, 0);
     container.appendChild(gl.canvas);

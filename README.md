@@ -12,6 +12,16 @@ A high-performance, interactive web application built with **Next.js**, focused 
 - **Interactive Branding**: Custom animated text and visual storytelling elements (`Orb`, `SpotlightCard`).
 - **Analytics Integrated**: Google Analytics 4 (GA4) implementation for tracking user engagement and site performance.
 
+## ⚡ Performance Optimizations (2025)
+
+The project underwent a rigorous optimization phase to ensure sub-second LCP and minimized TBT (Total Blocking Time) on mobile devices:
+
+- **Extreme Mobile Optimization**: Heavy WebGL components (`Orb.jsx`) use **Adaptive DPR** (capped at 1.0 on mobile) to balance visuals and performance. Background layers (`InteractiveGrid.jsx`) are conditionally disabled on mobile to save resources.
+- **Asset Weight Reduction**: Replaced a 508KB `noise.png` texture with a **<1KB CSS/SVG data URI**, drastically reducing network payload.
+- **Smart Logic**: `mousemove` listeners are disabled on touch devices to save CPU cycles.
+- **Code Splitting**: "Below-the-fold" sections in `b2b` and `b2c` pages are lazy-loaded using `next/dynamic`.
+- **Deferred Analytics**: Google Analytics scripts use `strategy="lazyOnload"` to prioritize critical content loading.
+
 ## 🛠 Tech Stack
 
 - **Framework**: [Next.js 15](https://nextjs.org/) (React)

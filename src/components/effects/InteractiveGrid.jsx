@@ -19,6 +19,9 @@ const InteractiveGrid = () => {
     const spotlightRef = useRef(null);
 
     useEffect(() => {
+        // Mobile Optimization: Do not run this effect or render on mobile
+        if (window.innerWidth < 768) return;
+
         // Set initial position to center
         gsap.set(spotlightRef.current, {
             x: window.innerWidth / 2,
