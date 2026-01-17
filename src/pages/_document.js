@@ -29,19 +29,7 @@ export default function Document() {
         <link rel="preload" href="/assets/fonts/poppinmed.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
       </Head>
       <body className="antialiased">
-        {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGWQ74LE36"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
 
-              gtag('config', 'G-MGWQ74LE36');
-            `,
-          }}
-        />
         <Main />
         <NextScript />
       </body>

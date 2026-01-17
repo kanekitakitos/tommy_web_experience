@@ -4,6 +4,7 @@ import InteractiveGrid from "@/components/effects/InteractiveGrid";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import Head from "next/head";
+import Script from "next/script";
 
 export default function App({ Component, pageProps }) {
   const pageRef = useRef(null);
@@ -26,6 +27,22 @@ export default function App({ Component, pageProps }) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
+
+      {/* Google Analytics via next/script */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-MGWQ74LE36"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-MGWQ74LE36');
+        `}
+      </Script>
+
       <ScrollProgressBar />
       <InteractiveGrid />
       <div ref={pageRef} className="opacity-0">
