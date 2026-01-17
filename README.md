@@ -10,6 +10,7 @@ A high-performance, interactive web application built with **Next.js**, focused 
 - **Modern Aesthetics**: Glassmorphism effects, custom glows (`OverlayGlow`), and spotlight interactions.
 - **Performance Optimized**: Leveraging Next.js Turbopack, SWC Minification, and optimized image/asset delivery for lightning-fast speeds.
 - **Interactive Branding**: Custom animated text and visual storytelling elements (`Orb`, `SpotlightCard`).
+- **Analytics Integrated**: Google Analytics 4 (GA4) implementation for tracking user engagement and site performance.
 
 ## 🛠 Tech Stack
 
