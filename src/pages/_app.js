@@ -1,10 +1,12 @@
 import "@/styles/globals.css";
 import ScrollProgressBar from "@/components/effects/ScrollProgressBar";
-import InteractiveGrid from "@/components/effects/InteractiveGrid";
 import { useEffect, useRef } from "react";
+import dynamic from "next/dynamic";
 import gsap from "gsap";
 import Head from "next/head";
 import Script from "next/script";
+
+const InteractiveGrid = dynamic(() => import("@/components/effects/InteractiveGrid"), { ssr: false });
 
 export default function App({ Component, pageProps }) {
   const pageRef = useRef(null);
@@ -31,9 +33,9 @@ export default function App({ Component, pageProps }) {
       {/* Google Analytics via next/script */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-MGWQ74LE36"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
       />
-      <Script id="google-analytics" strategy="afterInteractive">
+      <Script id="google-analytics" strategy="lazyOnload">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}

@@ -35,7 +35,11 @@ const InteractiveGrid = () => {
             });
         };
 
-        window.addEventListener("mousemove", handleMouseMove);
+        // Only attach listener if device has a fine pointer (mouse)
+        if (window.matchMedia("(pointer: fine)").matches) {
+            window.addEventListener("mousemove", handleMouseMove);
+        }
+
         return () => window.removeEventListener("mousemove", handleMouseMove);
     }, []);
 

@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import Orb from "@/components/effects/Orb";
+import dynamic from "next/dynamic";
+const Orb = dynamic(() => import("@/components/effects/Orb"), { ssr: false });
 import OverlayGlow from "@/components/effects/OverlayGlow";
 import gsap from "gsap";
 import Button from "@/components/ui/Button";
