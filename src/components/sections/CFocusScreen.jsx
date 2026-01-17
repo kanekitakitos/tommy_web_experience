@@ -51,7 +51,11 @@ const CFocusScreen = () => {
                         your business scale smarter, faster, and more efficiently.
                     </p>
 
-                    <Button text="Book Meeting" isBookMeeting={true} />
+                    <Button
+                        text="Get in Touch"
+                        // Lógica de Redirecionamento de Email
+                        onClick={() => window.location.href = 'mailto:contact@newgenservices.co'}
+                    />
                 </div>
 
                 {/* Footer / Features List */}

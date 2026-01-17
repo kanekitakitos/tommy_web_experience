@@ -53,7 +53,11 @@ const FocusScreen = () => {
                         audience.
                     </p>
 
-                    <Button text="Book Meeting" isBookMeeting={true} />
+                    <Button
+                        text="Get in Touch"
+                        // Lógica de Redirecionamento de Email
+                        onClick={() => window.location.href = 'mailto:contact@newgenservices.co'}
+                    />
                 </div>
 
                 {/* Footer List */}
