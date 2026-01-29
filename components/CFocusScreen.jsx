@@ -1,0 +1,52 @@
+import React from "react";
+import OverlayGlow from "./OverlayGlow";
+import Button from "./partials/Button";
+import { LucideCheckCircle } from "lucide-react";
+
+const CFocusScreen = () => {
+    return (
+        <section className="h-screen flex flex-col items-center gap-20 text-white relative">
+            <div className="pointer-events-none absolute inset-0 z-0">
+                <OverlayGlow />
+            </div>
+
+            {/* Navbar */}
+            <header className="z-10 md:w-[57%] w-[90%] flex justify-between items-center text-lg p-3 mt-4">
+                <div className="select-none">
+                    <img
+                        src="/images/logonewgen.png"
+                        alt="Logo"
+                        className="w-36 object-contain"
+                    />
+                </div>
+
+                <Button text="Book Meeting" />
+            </header>
+
+            <div className="z-10 flex flex-col items-center gap-6">
+                <h2 className="md:text-5xl text-[4.5vw] text-center md:w-2/3 w-[95%] mt-14 font-[poppinmed] text-white leading-snug text-nowrap">
+                    Services Built for Growth
+                </h2>
+                <p className="text-center md:w-[45%] w-[95%] mb-4">
+                    AI-powered solutions and creative expertise designed to help
+                    your business scale smarter, faster, and more efficiently.
+                </p>
+                <Button text="Book Meeting" />
+            </div>
+            <div className="z-10 flex flex-wrap justify-center items-center gap-6 text-white">
+                {["For SMBs", "For Enterprises", "For Start-ups"].map(
+                    (item) => (
+                        <div key={item} className="flex items-center gap-2">
+                            <LucideCheckCircle className="text-white md:text-lg text-sm" />
+                            <span className="md:text-lg font-medium">
+                                {item}
+                            </span>
+                        </div>
+                    )
+                )}
+            </div>
+        </section>
+    );
+};
+
+export default CFocusScreen;
